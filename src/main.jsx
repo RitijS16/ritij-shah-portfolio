@@ -144,21 +144,6 @@ function TopNav() {
   );
 }
 
-function Avatar() {
-  return (
-    <div className="avatar-scene" aria-hidden="true">
-      <div className="avatar-ring ring-one" />
-      <div className="avatar-ring ring-two" />
-      <div className="avatar-photo-glow" />
-      <div className="avatar-photo-wrap">
-        <img className="developer-photo" src="/developer-boy.svg" alt="Developer illustration" />
-      </div>
-      <div className="avatar-code-badge"><Code2 size={23} /></div>
-      <div className="avatar-note">Build<br />Learn<br />Improve<br />Repeat</div>
-      <div className="avatar-bracket">{"< />"}</div>
-    </div>
-  );
-}
 function StatCard({ icon: Icon, value, label }) {
   return (
     <div className="stat-card">
