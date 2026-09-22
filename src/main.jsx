@@ -215,7 +215,19 @@ function Hero() {
         <div className="tech-stack-strip">
           <p>// TECH STACK</p>
           <div className="stack-icons">
-            {["PY", "⚛", "DJ", "SQL", "DB", "AWS", "TW"].map((item) => <span key={item}>{item}</span>)}
+            {[
+              ["PY", "Python", "python"],
+              ["JS", "JavaScript", "javascript"],
+              ["⚛", "React", "react"],
+              ["DJ", "Django", "django"],
+              ["SQL", "SQL", "sql"],
+              ["PS", "PostgreSQL", "postgresql"],
+              ["AWS", "AWS", "aws"]
+            ].map(([logo, name, cls]) => (
+              <span className={`stack-logo ${cls}`} key={name}>
+                <b>{logo}</b><small>{name}</small>
+              </span>
+            ))}
           </div>
         </div>
 
