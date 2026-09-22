@@ -1134,3 +1134,44 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
   .hero-intro h2 { font-size: clamp(3rem, 12vw, 4.3rem) !important; }
   .coding-graphic { right: -130px !important; bottom: 190px !important; opacity: .18 !important; }
 }
+
+/* Final hero composition: one clear focal layout */
+@media (min-width: 981px) {
+  .dashboard-hero {
+    min-height: 680px !important;
+    height: 680px !important;
+    grid-template-columns: minmax(520px, .9fr) 1.1fr !important;
+  }
+  .hero-copy {
+    padding-top: 64px !important;
+    padding-bottom: 50px !important;
+  }
+  .hero-copy h1 {
+    font-size: clamp(5rem, 7vw, 7.4rem) !important;
+  }
+  .hero-main {
+    padding: 62px 52px 48px !important;
+    justify-content: flex-start !important;
+  }
+  .hero-main .hero-intro {
+    padding-top: 8px !important;
+    max-width: 650px !important;
+  }
+  .hero-intro h2 {
+    font-size: clamp(4rem, 5.5vw, 6rem) !important;
+    margin: 18px 0 22px !important;
+  }
+  .coding-graphic {
+    top: auto !important;
+    bottom: 38px !important;
+    right: 28px !important;
+    opacity: .38 !important;
+    transform: scale(.72) !important;
+  }
+}
+@media (min-width: 981px) and (max-width: 1200px) {
+  .dashboard-hero { grid-template-columns: 1fr 1fr !important; }
+  .hero-copy { padding-left: 40px !important; }
+  .hero-main { padding-left: 38px !important; padding-right: 30px !important; }
+  .coding-graphic { right: -25px !important; transform: scale(.62) !important; }
+}
