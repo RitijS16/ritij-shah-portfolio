@@ -683,3 +683,11 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
     transform: scale(.62);
   }
 }
+
+/* Sidebar removed */
+.portfolio-page { margin-left: 0 !important; width: 100%; }
+@media (max-width: 980px) {
+  .portfolio-sidebar,
+  .mobile-menu-button { display: none !important; }
+  .portfolio-page { margin-left: 0 !important; }
+}
