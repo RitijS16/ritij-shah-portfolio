@@ -1009,7 +1009,7 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
 /* Keep coding visual contained to the right half */
 @media (min-width: 981px) {
   .hero-main {
-    padding-top: 390px !important;
+    padding-top: 155px !important;
   }
   .hero-main .hero-intro {
     max-width: 620px !important;
@@ -1051,6 +1051,6 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
   }
 }
 @media (max-width: 1200px) and (min-width: 981px) {
-  .hero-main { padding-top: 370px !important; }
+  .hero-main { padding-top: 145px !important; }
   .coding-graphic { transform: scale(.9) !important; transform-origin: top right !important; }
 }
