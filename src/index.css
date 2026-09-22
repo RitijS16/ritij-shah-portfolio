@@ -944,3 +944,64 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
 @media (max-width: 700px) {
   .coding-graphic { opacity: .35 !important; right: -90px; top: 175px; transform: scale(.62); }
 }
+
+/* Hero coding visual - final placement */
+.hero-main {
+  position: relative !important;
+  overflow: hidden;
+}
+.coding-graphic {
+  position: absolute !important;
+  display: block !important;
+  width: 520px !important;
+  height: 390px !important;
+  right: 35px !important;
+  top: 70px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  transform: none !important;
+}
+.hero-main .hero-intro {
+  position: relative;
+  z-index: 7 !important;
+  max-width: 560px;
+}
+.code-window {
+  width: 420px !important;
+  height: 255px !important;
+  right: 25px !important;
+  top: 45px !important;
+  z-index: 3 !important;
+  transform: none !important;
+  background: rgba(5, 12, 29, .96) !important;
+}
+.code-orbit.orbit-a {
+  width: 350px !important;
+  height: 350px !important;
+  right: 8px !important;
+  top: 5px !important;
+}
+.code-orbit.orbit-b {
+  width: 230px !important;
+  height: 230px !important;
+  right: 68px !important;
+  top: 65px !important;
+}
+.code-symbol {
+  left: 18px !important;
+  bottom: 35px !important;
+}
+.code-float {
+  right: 0 !important;
+  bottom: 30px !important;
+}
+@media (max-width: 1200px) {
+  .coding-graphic { right: 0 !important; transform: scale(.85) !important; transform-origin: top right !important; }
+}
+@media (max-width: 980px) {
+  .coding-graphic { right: -70px !important; top: 120px !important; transform: scale(.72) !important; opacity: .65 !important; }
+}
+@media (max-width: 700px) {
+  .coding-graphic { right: -145px !important; top: 180px !important; transform: scale(.58) !important; opacity: .3 !important; }
+}
