@@ -147,36 +147,31 @@ function TopNav() {
 function Avatar() {
   return (
     <div className="avatar-scene" aria-hidden="true">
-      <div className="avatar-ring ring-one" />
-      <div className="avatar-ring ring-two" />
-      <div className="avatar-glow" />
-      <div className="avatar-code-badge"><Code2 size={23} /></div>
+      <div className="avatar-halo halo-one" />
+      <div className="avatar-halo halo-two" />
+      <div className="avatar-grid-glow" />
 
-      <div className="avatar">
-        <div className="avatar-hair" />
-        <div className="avatar-head">
-          <div className="avatar-ear left" />
-          <div className="avatar-ear right" />
-          <div className="avatar-glasses">
-            <span /><span /><b />
-          </div>
-          <div className="avatar-nose" />
-          <div className="avatar-mouth" />
-        </div>
-        <div className="avatar-neck" />
-        <div className="avatar-hoodie">
-          <div className="hoodie-string left" />
-          <div className="hoodie-string right" />
-          <span className="hoodie-logo">{"{}"}</span>
-        </div>
+      <div className="art-panel art-panel-code">
+        <Code2 size={19} />
+        <span>&lt;/&gt;</span>
       </div>
 
-      <div className="avatar-note">Better<br />solutions<br />everyday.</div>
-      <div className="avatar-bracket">{"< />"}</div>
+      <div className="art-panel art-panel-build">
+        <small>BUILD</small>
+        <small>LEARN</small>
+        <small>IMPROVE</small>
+        <small>REPEAT</small>
+      </div>
+
+      <img className="developer-art" src="/ritij-avatar.svg" alt="" />
+
+      <div className="art-note art-note-left">Ideas<br />Code<br />Create<br />Repeat</div>
+      <div className="art-note art-note-right">Better<br />Version<br />Everyday</div>
+      <div className="art-plus plus-one">+</div>
+      <div className="art-plus plus-two">+</div>
     </div>
   );
 }
-
 function StatCard({ icon: Icon, value, label }) {
   return (
     <div className="stat-card">
