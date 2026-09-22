@@ -1003,11 +1003,13 @@ function Contact() {
           <div className="mt-9 flex flex-wrap justify-center gap-3">
 
             <a
-              href="mailto:shahritij7841@gmail.com"
+              href="/resume.html"
+              target="_blank"
+              rel="noreferrer"
               className="primary-button"
             >
-              <Mail size={16} />
-              Email Me
+              <ArrowUpRight size={16} />
+              View Resume
             </a>
 
             <a
