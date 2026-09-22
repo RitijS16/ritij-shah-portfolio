@@ -1005,3 +1005,52 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
 @media (max-width: 700px) {
   .coding-graphic { right: -145px !important; top: 180px !important; transform: scale(.58) !important; opacity: .3 !important; }
 }
+
+/* Keep coding visual contained to the right half */
+@media (min-width: 981px) {
+  .hero-main {
+    padding-top: 390px !important;
+  }
+  .hero-main .hero-intro {
+    max-width: 620px !important;
+  }
+  .coding-graphic {
+    width: 455px !important;
+    height: 330px !important;
+    right: 24px !important;
+    top: 24px !important;
+  }
+  .code-window {
+    width: 355px !important;
+    height: 220px !important;
+    right: 20px !important;
+    top: 18px !important;
+  }
+  .code-orbit.orbit-a {
+    width: 300px !important;
+    height: 300px !important;
+    right: 0 !important;
+    top: 0 !important;
+  }
+  .code-orbit.orbit-b {
+    width: 190px !important;
+    height: 190px !important;
+    right: 55px !important;
+    top: 55px !important;
+  }
+  .code-symbol {
+    display: none !important;
+  }
+  .code-float {
+    right: 0 !important;
+    bottom: 8px !important;
+  }
+  .floating-word-list {
+    right: 0 !important;
+    top: 74% !important;
+  }
+}
+@media (max-width: 1200px) and (min-width: 981px) {
+  .hero-main { padding-top: 370px !important; }
+  .coding-graphic { transform: scale(.9) !important; transform-origin: top right !important; }
+}
