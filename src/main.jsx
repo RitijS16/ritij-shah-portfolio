@@ -1,1097 +1,418 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { motion } from "framer-motion";
-
 import {
   ArrowUpRight,
+  Github,
+  Linkedin,
   Mail,
-  ExternalLink,
-  Code2,
-  Database,
-  Brain,
+  Home,
+  UserRound,
+  Wrench,
+  FolderKanban,
+  BriefcaseBusiness,
   Trophy,
   Menu,
   X,
-  Terminal,
-  Sparkles,
-  Cpu,
-  Layers,
+  Code2,
+  Database,
+  BrainCircuit,
+  BarChart3,
+  Download,
+  Send,
+  ExternalLink,
 } from "lucide-react";
-
 import "./index.css";
 
-/* =========================
-   DATA
-========================= */
-
 const skills = [
-  "Python",
-  "Django",
-  "React.js",
-  "JavaScript",
-  "REST APIs",
-  "SQL",
-  "PostgreSQL",
-  "MySQL",
-  "Pandas",
-  "NumPy",
-  "TensorFlow",
-  "Power BI",
-  "Matplotlib",
-  "AWS",
-  "Linux",
+  "Python", "React.js", "Django", "JavaScript", "REST APIs",
+  "SQL", "PostgreSQL", "MySQL", "Pandas", "NumPy",
+  "TensorFlow", "Power BI", "Matplotlib", "AWS", "Linux",
 ];
 
 const projects = [
   {
     title: "Facial Emotion Recognition",
-    type: "AI / COMPUTER VISION",
-    desc: "Real-time facial emotion recognition application using computer vision and a CNN model built with TensorFlow.",
-    tech: ["Python", "TensorFlow", "CNN", "Computer Vision"],
-    icon: Brain,
-    link: "https://github.com/RitijS16?tab=repositories",
+    type: "COMPUTER VISION",
+    description: "Real-time facial emotion recognition using a CNN model with TensorFlow.",
+    tags: ["Python", "TensorFlow", "CNN"],
+    icon: BrainCircuit,
   },
   {
     title: "Uber Data Analysis",
-    type: "DATA ANALYTICS",
-    desc: "Analyzed 100K+ Uber trip records to identify peak-hour demand, trip-duration trends and high-demand locations.",
-    tech: ["Python", "Pandas", "SQL", "Power BI"],
-    icon: Database,
-    link: "https://github.com/RitijS16?tab=repositories",
+    type: "DATA ANALYSIS",
+    description: "Analyzed 100K+ Uber trip records to identify demand, duration and location trends.",
+    tags: ["Python", "Pandas", "Power BI"],
+    icon: BarChart3,
   },
   {
-    title: "NLP Movie Recommender",
-    type: "MACHINE LEARNING",
-    desc: "Personalized movie recommendation system using similarity and correlation techniques to improve recommendations.",
-    tech: ["Python", "NLP", "Cosine Similarity", "ML"],
+    title: "ISB Website",
+    type: "WEB DEVELOPMENT",
+    description: "Responsive website work during my Full Stack internship using React, Django and REST APIs.",
+    tags: ["React", "Django", "REST API"],
     icon: Code2,
-    link: "https://github.com/RitijS16?tab=repositories",
-  },
-  {
-    title: "Student Database System",
-    type: "DATABASE / SOFTWARE",
-    desc: "Application for managing student academics, attendance, exams, registration, courses and grade reporting.",
-    tech: ["Python", "SQL", "Database"],
-    icon: Layers,
-    link: "https://github.com/RitijS16?tab=repositories",
   },
 ];
 
 const experience = [
   {
-    year: "2026",
-    role: "Full Stack Intern",
+    period: "JAN 2026 — JUN 2026",
     company: "Terabit Support",
-    text: "Developed and deployed a responsive ISB website using React.js and Django. Integrated RESTful APIs, request handling, validation and asynchronous operations.",
+    role: "Full Stack Intern",
+    description: "Built a responsive ISB website with React.js and Django, reusable UI components, REST APIs, validation and asynchronous operations.",
   },
   {
-    year: "2025",
-    role: "Python Intern",
+    period: "JUN 2025 — AUG 2025",
     company: "PHD Project",
-    text: "Worked on cancer-detection research using Python, focusing on data preprocessing, feature engineering, model evaluation and SHAP-based interpretability.",
+    role: "Python Intern",
+    description: "Worked on cancer-detection research with preprocessing, feature engineering, predictive modeling, SHAP and model evaluation.",
   },
   {
-    year: "2025–26",
-    role: "Operations Executive",
+    period: "MAR 2025 — JUN 2026",
     company: "Aftermath Ventures",
-    text: "Led end-to-end operations for large-scale esports and technology events, coordinating logistics, resources, schedules and stakeholders.",
+    role: "Operations Executive",
+    description: "Handled operations for esports and technology events, coordinating logistics, resources, schedules and stakeholders.",
   },
 ];
 
-/* =========================
-   NAVIGATION
-========================= */
+const navItems = [
+  ["Home", "home", Home],
+  ["About", "about", UserRound],
+  ["Skills", "skills", Wrench],
+  ["Projects", "projects", FolderKanban],
+  ["Experience", "experience", BriefcaseBusiness],
+  ["Achievements", "achievements", Trophy],
+  ["Contact", "contact", Mail],
+];
 
-function Nav() {
-  const [open, setOpen] = React.useState(false);
-
-  const links = [
-    "About",
-    "Skills",
-    "Experience",
-    "Projects",
-    "Contact",
-  ];
-
+function Sidebar({ mobileOpen, setMobileOpen }) {
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-
-        <a
-          href="#home"
-          className="text-lg font-black tracking-tight"
-        >
-          R<span className="text-white/30">.</span>SHAH
-        </a>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {links.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="nav-link"
-            >
-              {item}
-            </a>
-          ))}
+    <>
+      <aside className={`portfolio-sidebar ${mobileOpen ? "sidebar-open" : ""}`}>
+        <div className="sidebar-brand">
+          <span>RS</span><i />
         </div>
 
-        <a
-          href="#contact"
-          className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-medium transition hover:bg-white hover:text-black md:block"
-        >
-          Let's Talk
-        </a>
-
-        <button
-          className="md:hidden"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-
-      </div>
-
-      {open && (
-        <div className="mobile-menu border-t border-white/10 px-6 pb-5 md:hidden">
-          {links.map((item) => (
+        <nav className="sidebar-nav">
+          {navItems.map(([label, id, Icon], index) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setOpen(false)}
-              className="block py-3 text-white/60"
+              href={`#${id}`}
+              key={id}
+              className={index === 0 ? "sidebar-link active" : "sidebar-link"}
+              onClick={() => setMobileOpen(false)}
             >
-              {item}
+              <Icon size={19} strokeWidth={1.8} />
+              <span>{label}</span>
             </a>
           ))}
+        </nav>
+
+        <div className="sidebar-socials">
+          <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
+          <a href="https://www.linkedin.com/in/ritij-shah" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
+          <a href="mailto:shahritij2004@gmail.com" aria-label="Email"><Mail size={19} /></a>
         </div>
-      )}
-    </nav>
+
+        <div className="sidebar-footer">
+          <span>LET'S</span>
+          <strong>BUILD<br />SOMETHING<br />GREAT.</strong>
+        </div>
+      </aside>
+
+      <button className="mobile-menu-button" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle navigation">
+        {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
+    </>
   );
 }
 
-/* =========================
-   FLOATING ORB
-========================= */
-
-function FloatingOrb({ className }) {
+function TopNav() {
   return (
-    <motion.div
-      className={`absolute rounded-full bg-white/10 blur-3xl ${className}`}
-      animate={{
-        x: [0, 30, -20, 0],
-        y: [0, -25, 25, 0],
-        scale: [1, 1.15, 0.9, 1],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
+    <header className="top-nav">
+      <div className="top-nav-links">
+        {["Home", "About", "Skills", "Projects", "Experience", "Achievements", "Contact"].map((item, index) => (
+          <a key={item} className={index === 0 ? "top-link active" : "top-link"} href={`#${item.toLowerCase()}`}>
+            {item}
+          </a>
+        ))}
+      </div>
+      <a className="connect-button" href="#contact">
+        <Send size={15} />
+        Let's Connect
+      </a>
+    </header>
   );
 }
 
-/* =========================
-   HERO GRAPHIC
-========================= */
-
-function HeroGraphic() {
+function Avatar() {
   return (
-    <div className="hero-graphic relative mx-auto hidden h-[450px] w-[450px] lg:block">
+    <div className="avatar-scene" aria-hidden="true">
+      <div className="avatar-ring ring-one" />
+      <div className="avatar-ring ring-two" />
+      <div className="avatar-glow" />
+      <div className="avatar-code-badge"><Code2 size={23} /></div>
 
-      <motion.div
-        className="absolute inset-12 rounded-full border border-white/10"
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      <motion.div
-        className="absolute inset-24 rounded-full border border-white/10"
-        animate={{ rotate: -360 }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      <motion.div
-        className="absolute inset-[135px] rounded-full border border-white/20"
-        animate={{
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-        }}
-      />
-
-      <motion.div
-        className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl border border-white/20 bg-white/[0.04] backdrop-blur-xl"
-        animate={{
-          rotate: [0, 3, -3, 0],
-          y: [0, -8, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="text-center">
-          <Terminal
-            className="mx-auto mb-2"
-            size={26}
-          />
-
-          <span className="font-mono text-xs text-white/50">
-            DEV_MODE
-          </span>
+      <div className="avatar">
+        <div className="avatar-hair" />
+        <div className="avatar-head">
+          <div className="avatar-ear left" />
+          <div className="avatar-ear right" />
+          <div className="avatar-glasses">
+            <span /><span /><b />
+          </div>
+          <div className="avatar-nose" />
+          <div className="avatar-mouth" />
         </div>
-      </motion.div>
-
-      <motion.div
-        className="absolute left-4 top-28 h-3 w-3 rounded-full bg-white"
-        animate={{
-          x: [0, 30, 0],
-          opacity: [0.3, 1, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-        }}
-      />
-
-      <motion.div
-        className="absolute right-8 top-20 h-2 w-2 rounded-full bg-white/70"
-        animate={{
-          y: [0, 35, 0],
-          opacity: [0.2, 1, 0.2],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-20 left-20 h-2 w-2 rounded-full bg-white/60"
-        animate={{
-          x: [0, -25, 0],
-          opacity: [0.2, 1, 0.2],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-        }}
-      />
-
-      <div className="absolute left-10 top-10 font-mono text-[10px] text-white/20">
-        PYTHON
+        <div className="avatar-neck" />
+        <div className="avatar-hoodie">
+          <div className="hoodie-string left" />
+          <div className="hoodie-string right" />
+          <span className="hoodie-logo">{}</span>
+        </div>
       </div>
 
-      <div className="absolute bottom-12 right-5 font-mono text-[10px] text-white/20">
-        REACT / DJANGO
-      </div>
-
-      <div className="absolute right-0 top-1/2 font-mono text-[10px] text-white/20">
-        AI + DATA
-      </div>
-
+      <div className="avatar-note">Better<br />solutions<br />everyday.</div>
+      <div className="avatar-bracket">{"< />"}</div>
     </div>
   );
 }
 
-/* =========================
-   HERO
-========================= */
+function StatCard({ icon: Icon, value, label }) {
+  return (
+    <div className="stat-card">
+      <div className="stat-icon"><Icon size={23} /></div>
+      <strong>{value}</strong>
+      <span>{label}</span>
+    </div>
+  );
+}
 
 function Hero() {
   return (
-    <section
-      id="home"
-      className="relative min-h-screen overflow-hidden"
-    >
-
-      <FloatingOrb className="left-[10%] top-[20%] h-72 w-72" />
-
-      <FloatingOrb className="right-[5%] top-[40%] h-96 w-96" />
-
-      <div className="absolute inset-0 grid-lines opacity-50" />
-
-      <div className="relative mx-auto grid min-h-screen max-w-7xl items-center gap-10 px-6 pb-20 pt-32 lg:grid-cols-[1.15fr_.85fr]">
-
-        <div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center gap-3"
-          >
-
-            <span className="status-dot" />
-
-            <span className="font-mono text-xs tracking-[0.2em] text-white/40">
-              AVAILABLE FOR OPPORTUNITIES
-            </span>
-
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-4 font-mono text-xs text-white/30"
-          >
-            MUMBAI · INDIA
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.15,
-              duration: 0.7,
-            }}
-            className="hero-title"
-          >
-            Ritij
-            <br />
-            <span>Shah.</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 }}
-            className="mt-7 flex flex-wrap gap-2"
-          >
-            <span className="hero-chip">FULL-STACK</span>
-            <span className="hero-chip">PYTHON</span>
-            <span className="hero-chip">DATA & AI</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6 text-xl font-semibold text-white/65 sm:text-2xl"
-          >
-            Full-Stack Developer
-            <span className="mx-2 text-white/20">
-              ·
-            </span>
-            Python
-            <span className="mx-2 text-white/20">
-              ·
-            </span>
-            Data & AI
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-6 max-w-xl text-base leading-8 text-white/40 sm:text-lg"
-          >
-            Computer Science graduate building web applications,
-            Python-based solutions and data-driven products using
-            React, Django, SQL and machine learning.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-9 flex flex-wrap gap-3"
-          >
-
-            <a
-              href="#projects"
-              className="primary-button"
-            >
-              Explore Projects
-              <ArrowUpRight size={16} />
-            </a>
-
-            <a
-              href="#contact"
-              className="secondary-button"
-            >
-              Let's Connect
-            </a>
-
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-10 grid max-w-xl grid-cols-3 gap-3"
-          >
-            <div className="hero-stat">
-              <strong>3+</strong>
-              <span>Experiences</span>
-            </div>
-            <div className="hero-stat">
-              <strong>4</strong>
-              <span>Featured Projects</span>
-            </div>
-            <div className="hero-stat">
-              <strong>2026</strong>
-              <span>Graduate</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.95 }}
-            className="mt-6 flex items-center gap-6"
-          >
-
-            <a
-              href="https://github.com/RitijS16?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
-              className="social-link"
-              aria-label="GitHub"
-              title="GitHub"
-            >
-              <Code2 size={18} />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/ritij-shah"
-              target="_blank"
-              rel="noreferrer"
-              className="social-link"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-            >
-              <ExternalLink size={18} />
-            </a>
-
-            <a
-              href="mailto:shahritij7841@gmail.com"
-              className="social-link"
-              aria-label="Email"
-              title="Email"
-            >
-              <Mail size={18} />
-            </a>
-
-          </motion.div>
-
-        </div>
-
-        <HeroGraphic />
-
-      </div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-        animate={{ y: [0, 8, 0] }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
-      >
-
-        <span className="font-mono text-[9px] tracking-[0.3em] text-white/20">
-          SCROLL
-        </span>
-
-        <div className="h-10 w-px bg-gradient-to-b from-white/30 to-transparent" />
-
-      </motion.div>
-
-    </section>
-  );
-}
-
-/* =========================
-   SECTION TITLE
-========================= */
-
-function SectionTitle({
-  number,
-  label,
-  title,
-}) {
-  return (
-    <div className="mb-14 grid gap-6 md:grid-cols-[.5fr_1.5fr]">
-
-      <p className="font-mono text-xs tracking-[0.25em] text-white/25">
-        {number} / {label}
-      </p>
-
-      <h2 className="section-title">
-        {title}
-      </h2>
-
-    </div>
-  );
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-function About() {
-  return (
-    <section
-      id="about"
-      className="border-y border-white/10 py-28"
-    >
-
-      <div className="mx-auto max-w-7xl px-6">
-
-        <SectionTitle
-          number="01"
-          label="ABOUT"
-          title="I build, analyze, and solve."
-        />
-
-        <div className="grid gap-10 md:grid-cols-2">
-
-          <div className="glass-card p-8">
-
-            <Terminal
-              className="mb-6 text-white/50"
-              size={25}
-            />
-
-            <p className="text-lg leading-8 text-white/55">
-              My background sits at the intersection of software
-              development, data and AI. I enjoy turning ideas into
-              functional applications and using data to understand
-              problems and build better solutions.
-            </p>
-
-          </div>
-
-          <div className="glass-card p-8">
-
-            <Cpu
-              className="mb-6 text-white/50"
-              size={25}
-            />
-
-            <p className="text-lg leading-8 text-white/55">
-              I've worked with React and Django on a real website,
-              researched explainable AI, developed Python-based
-              applications and built analytical projects using
-              Python, SQL and Power BI.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-/* =========================
-   SKILLS
-========================= */
-
-function Skills() {
-  return (
-    <section
-      id="skills"
-      className="py-28"
-    >
-
-      <div className="mx-auto max-w-7xl px-6">
-
-        <SectionTitle
-          number="02"
-          label="STACK"
-          title="Tools I work with."
-        />
-
-        <div className="flex flex-wrap gap-3">
-
-          {skills.map((skill, index) => (
-
-            <motion.div
-              key={skill}
-              initial={{
-                opacity: 0,
-                scale: 0.8,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.035,
-              }}
-              whileHover={{
-                y: -5,
-                scale: 1.04,
-              }}
-              className="skill-pill"
-            >
-              {skill}
-            </motion.div>
-
-          ))}
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-/* =========================
-   EXPERIENCE
-========================= */
-
-function Experience() {
-  return (
-    <section
-      id="experience"
-      className="border-y border-white/10 py-28"
-    >
-
-      <div className="mx-auto max-w-7xl px-6">
-
-        <SectionTitle
-          number="03"
-          label="EXPERIENCE"
-          title="Where I've worked."
-        />
-
-        <div className="relative ml-2 border-l border-white/10 md:ml-10">
-
-          {experience.map((item, index) => (
-
-            <motion.article
-              key={item.role}
-              initial={{
-                opacity: 0,
-                x: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.15,
-              }}
-              className="timeline-item"
-            >
-
-              <div className="timeline-dot" />
-
-              <div className="glass-card p-7 md:p-9">
-
-                <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
-
-                  <div>
-
-                    <p className="mb-2 font-mono text-xs tracking-widest text-white/30">
-                      {item.year}
-                    </p>
-
-                    <h3 className="text-2xl font-bold">
-                      {item.role}
-                    </h3>
-
-                    <p className="mt-1 text-white/40">
-                      {item.company}
-                    </p>
-
-                  </div>
-
-                  <Sparkles
-                    size={20}
-                    className="text-white/20"
-                  />
-
-                </div>
-
-                <p className="max-w-3xl leading-8 text-white/45">
-                  {item.text}
-                </p>
-
-              </div>
-
-            </motion.article>
-
-          ))}
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-/* =========================
-   PROJECT CARD
-========================= */
-
-function ProjectCard({
-  project,
-  index,
-}) {
-
-  const Icon = project.icon;
-
-  return (
-    <motion.article
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        margin: "-50px",
-      }}
-      transition={{
-        delay: index * 0.1,
-        duration: 0.6,
-      }}
-      whileHover={{
-        y: -8,
-      }}
-      className="project-card group"
-    >
-
-      <div className="project-number">
-        0{index + 1}
-      </div>
-
-      <div className="project-icon">
-        <Icon size={25} />
-      </div>
-
-      <p className="mt-8 font-mono text-[10px] tracking-[0.25em] text-white/30">
-        {project.type}
-      </p>
-
-      <h3 className="mt-3 text-2xl font-bold">
-        {project.title}
-      </h3>
-
-      <p className="mt-4 leading-7 text-white/40">
-        {project.desc}
-      </p>
-
-      <div className="mt-7 flex flex-wrap gap-2">
-
-        {project.tech.map((tech) => (
-
-          <span
-            key={tech}
-            className="tech-tag"
-          >
-            {tech}
-          </span>
-
-        ))}
-
-      </div>
-
-      <div className="mt-8 flex gap-4">
-
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          className="project-link"
-        >
-          GitHub
-          <ArrowUpRight size={14} />
-        </a>
-
-        <a
-          href="#contact"
-          className="project-link"
-        >
-          Details
-          <ExternalLink size={14} />
-        </a>
-
-      </div>
-
-    </motion.article>
-  );
-}
-
-/* =========================
-   PROJECTS
-========================= */
-
-function Projects() {
-  return (
-    <section
-      id="projects"
-      className="py-28"
-    >
-
-      <div className="mx-auto max-w-7xl px-6">
-
-        <SectionTitle
-          number="04"
-          label="SELECTED WORK"
-          title="Things I've built."
-        />
-
-        <div className="mb-10 flex items-center justify-between gap-4">
-          <p className="max-w-2xl text-sm leading-7 text-white/35">
-            A selection of projects across computer vision, analytics,
-            machine learning and software development.
-          </p>
-          <a
-            href="https://github.com/RitijS16?tab=repositories"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-full border border-white/10 px-4 py-2 text-xs text-white/50 transition hover:border-white/25 hover:text-white sm:inline-flex"
-          >
-            View all repositories <ArrowUpRight size={14} />
+    <section id="home" className="dashboard-hero">
+      <div className="hero-copy">
+        <p className="eyebrow">// HELLO, I'M</p>
+        <h1>RITIJ<br /><span>SHAH</span></h1>
+        <p className="role-line">Full Stack Developer <b>|</b> Python Developer <b>|</b> Data Enthusiast</p>
+        <p className="hero-description">
+          I build scalable web applications, work with data, and explore AI to solve real-world problems.
+          Passionate about creating clean, efficient and impactful digital solutions.
+        </p>
+
+        <div className="hero-actions">
+          <a href="#projects" className="gradient-button">View My Work <ArrowUpRight size={18} /></a>
+          <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" className="outline-button">
+            <Github size={17} /> GitHub
           </a>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-
-          {projects.map((project, index) => (
-
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={index}
-            />
-
-          ))}
-
+        <div className="hero-mini-stats">
+          <div><strong>3+</strong><span>Work Experiences</span></div>
+          <div><strong>4+</strong><span>Projects Completed</span></div>
+          <div><strong>8.2</strong><span>CGPA (B.Tech)</span></div>
         </div>
 
+        <div className="tech-stack-strip">
+          <p>// TECH STACK</p>
+          <div className="stack-icons">
+            {["PY", "⚛", "DJ", "SQL", "DB", "AWS", "TW"].map((item) => <span key={item}>{item}</span>)}
+          </div>
+        </div>
+
+        <blockquote>
+          “Turning ideas into impactful digital solutions.”
+          <small>— RITIJ SHAH</small>
+        </blockquote>
       </div>
 
+      <div className="hero-main">
+        <div className="hero-intro">
+          <p className="eyebrow">// BUILDING DIGITAL SOLUTIONS</p>
+          <h2>Clean Code<br /><span>Real Impact</span></h2>
+          <p>Computer Science graduate with hands-on experience in full-stack development, data analysis and AI/ML. I love building products that make a difference.</p>
+          <div className="availability"><i /> Available for Opportunities</div>
+        </div>
+
+        <Avatar />
+
+        <div className="floating-word-list">Ideas<br />Code<br />Build<br />Learn<br />Repeat</div>
+
+        <div className="stats-grid">
+          <StatCard icon={Code2} value="4+" label="Projects Completed" />
+          <StatCard icon={BriefcaseBusiness} value="3+" label="Work Experiences" />
+          <StatCard icon={Trophy} value="2026" label="B.Tech Graduate" />
+          <StatCard icon={BrainCircuit} value="AI" label="Data & ML" />
+        </div>
+      </div>
     </section>
   );
 }
 
-/* =========================
-   BEYOND CODE
-========================= */
-
-function BeyondCode() {
+function SectionHeading({ kicker, title, action }) {
   return (
-    <section className="border-y border-white/10 py-14">
-
-      <div className="mx-auto max-w-7xl px-6">
-
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-
-          <div className="flex items-center gap-4">
-
-            <Trophy
-              size={20}
-              className="text-white/30"
-            />
-
-            <div>
-
-              <p className="font-mono text-[10px] tracking-[0.25em] text-white/25">
-                BEYOND CODE
-              </p>
-
-              <p className="mt-1 text-sm text-white/35">
-                Leadership & event experience
-              </p>
-
-            </div>
-
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-6 font-mono text-xs text-white/30">
-
-            <span>75+ EVENTS</span>
-
-            <span>15K+ PARTICIPANTS</span>
-
-            <span>3M+ VIEWS</span>
-
-            <span>60+ CREW LED</span>
-
-          </div>
-
-        </div>
-
+    <div className="section-heading">
+      <div>
+        <p className="eyebrow">{kicker}</p>
+        <h2>{title}</h2>
       </div>
-
-    </section>
-  );
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-function Contact() {
-  return (
-    <section
-      id="contact"
-      className="relative overflow-hidden py-32"
-    >
-
-      <div className="absolute inset-0 grid-lines opacity-30" />
-
-      <div className="relative mx-auto max-w-7xl px-6">
-
-        <div className="contact-card glass-card overflow-hidden p-10 text-center md:p-20">
-
-          <motion.div
-            animate={{
-              rotate: [0, 10, -10, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-            }}
-          >
-
-            <Sparkles
-              className="mx-auto text-white/40"
-              size={28}
-            />
-
-          </motion.div>
-
-          <p className="mt-7 font-mono text-xs tracking-[0.3em] text-white/25">
-            05 / CONTACT
-          </p>
-
-          <h2 className="contact-title">
-            Let's build
-            <br />
-            something.
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-xl leading-7 text-white/40">
-            Looking for opportunities in full-stack development,
-            Python, data or AI.
-          </p>
-
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-
-            <a
-              href="/resume.html"
-              target="_blank"
-              rel="noreferrer"
-              className="primary-button"
-            >
-              <ArrowUpRight size={16} />
-              View Resume
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/ritij-shah"
-              target="_blank"
-              rel="noreferrer"
-              className="secondary-button"
-            >
-              <ExternalLink size={16} />
-              LinkedIn
-            </a>
-
-            <a
-              href="https://github.com/RitijS16?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
-              className="secondary-button"
-            >
-              <Code2 size={16} />
-              GitHub
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-/* =========================
-   APP
-========================= */
-
-function App() {
-  return (
-    <div className="min-h-screen overflow-hidden bg-black text-white">
-
-      <Nav />
-
-      <main>
-
-        <Hero />
-
-        <About />
-
-        <Skills />
-
-        <Experience />
-
-        <Projects />
-
-        <BeyondCode />
-
-        <Contact />
-
-      </main>
-
-      <footer className="border-t border-white/10">
-
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-8 text-xs text-white/25 sm:flex-row">
-
-          <span>
-            © 2026 Ritij Shah
-          </span>
-
-          <span className="font-mono">
-            REACT · TAILWIND · FRAMER MOTION
-          </span>
-
-        </div>
-
-      </footer>
-
+      {action}
     </div>
   );
 }
 
-createRoot(
-  document.getElementById("root")
-).render(
-  <App />
-);
+function About() {
+  return (
+    <section id="about" className="content-section">
+      <SectionHeading kicker="// ABOUT ME" title="A developer who likes to build." />
+      <div className="about-grid">
+        <div className="about-panel">
+          <span className="panel-number">01</span>
+          <h3>Full-stack mindset.</h3>
+          <p>I enjoy working across the stack — from responsive React interfaces to Django backends, APIs and databases.</p>
+        </div>
+        <div className="about-panel">
+          <span className="panel-number">02</span>
+          <h3>Data + AI curiosity.</h3>
+          <p>My projects and internship work include computer vision, machine learning, data analysis and explainable AI.</p>
+        </div>
+        <div className="about-panel wide">
+          <span className="panel-number">03</span>
+          <h3>Builder beyond code.</h3>
+          <p>Alongside technology, I've worked on large-scale esports and technology events, managing operations, people, logistics and live execution.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="content-section">
+      <SectionHeading kicker="// TECH STACK" title="Tools I work with." />
+      <div className="skills-grid">
+        {skills.map((skill, index) => (
+          <motion.div key={skill} className="skill-card" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.025 }}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{skill}</strong>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="content-section">
+      <SectionHeading
+        kicker="// FEATURED PROJECTS"
+        title="Selected work."
+        action={<a className="view-all" href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer">View All Projects <ArrowUpRight size={16} /></a>}
+      />
+
+      <div className="projects-grid">
+        {projects.map((project, index) => {
+          const Icon = project.icon;
+          return (
+            <motion.article key={project.title} className="project-tile" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
+              <div className="project-visual">
+                <div className={`project-visual-art art-${index + 1}`}>
+                  <Icon size={54} />
+                  <span>{project.type}</span>
+                </div>
+              </div>
+              <div className="project-content">
+                <div className="project-title-row">
+                  <div><span className="project-type">{project.type}</span><h3>{project.title}</h3></div>
+                  <span className="project-arrow"><ArrowUpRight size={19} /></span>
+                </div>
+                <p>{project.description}</p>
+                <div className="tag-row">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" className="project-github"><Github size={14} /> View on GitHub</a>
+              </div>
+            </motion.article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="experience" className="content-section">
+      <SectionHeading kicker="// EXPERIENCE TIMELINE" title="Where I've worked." />
+      <div className="experience-track">
+        {experience.map((item, index) => (
+          <motion.article key={item.company} className="experience-item" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.12 }}>
+            <span className="experience-dot" />
+            <p>{item.period}</p>
+            <h3>{item.company}</h3>
+            <strong>{item.role}</strong>
+            <span>{item.description}</span>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Achievements() {
+  return (
+    <section id="achievements" className="achievement-strip">
+      <div>
+        <p className="eyebrow">// BEYOND CODE</p>
+        <h2>Leadership & execution.</h2>
+      </div>
+      <div className="achievement-metrics">
+        <span><strong>75+</strong> EVENTS</span>
+        <span><strong>15K+</strong> PARTICIPANTS</span>
+        <span><strong>3M+</strong> VIEWS</span>
+        <span><strong>60+</strong> CREW LED</span>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="contact-section">
+      <p className="eyebrow">// LET'S CONNECT</p>
+      <h2>LET'S BUILD<br /><span>SOMETHING REAL.</span></h2>
+      <p>Open to opportunities in full-stack development, Python, data and AI.</p>
+      <div className="contact-actions">
+        <a href="mailto:shahritij2004@gmail.com" className="gradient-button"><Mail size={17} /> Get In Touch</a>
+        <a href="https://www.linkedin.com/in/ritij-shah" target="_blank" rel="noreferrer" className="outline-button"><Linkedin size={17} /> LinkedIn</a>
+        <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" className="outline-button"><Github size={17} /> GitHub</a>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  return (
+    <div className="portfolio-shell">
+      <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+      <div className="portfolio-page">
+        <TopNav />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Achievements />
+          <Contact />
+        </main>
+        <footer className="portfolio-footer">
+          <span>© 2026 RITIJ SHAH</span>
+          <span>REACT · DJANGO · PYTHON · DATA · AI</span>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<App />);
