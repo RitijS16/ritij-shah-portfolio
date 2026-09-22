@@ -167,7 +167,7 @@ function Avatar() {
         <div className="avatar-hoodie">
           <div className="hoodie-string left" />
           <div className="hoodie-string right" />
-          <span className="hoodie-logo">{}</span>
+          <span className="hoodie-logo">{"{}"}</span>
         </div>
       </div>
 
