@@ -171,8 +171,28 @@ function Hero() {
           <div className="availability"><i /> Available for Opportunities</div>
         </div>
 
+        <div className="coding-graphic" aria-hidden="true">
+          <div className="code-window">
+            <div className="window-bar"><i /><i /><i /><span>ritij.py</span></div>
+            <div className="code-body">
+              <span><b>01</b> <em>const</em> developer = {"{"}</span>
+              <span><b>02</b>&nbsp;&nbsp; name: <strong>"Ritij"</strong>,</span>
+              <span><b>03</b>&nbsp;&nbsp; stack: <strong>["Python", "React"]</strong>,</span>
+              <span><b>04</b>&nbsp;&nbsp; data: <strong>true</strong>,</span>
+              <span><b>05</b>&nbsp;&nbsp; ai: <strong>true</strong></span>
+              <span><b>06</b> {"}"};</span>
+              <span className="code-cursor">_</span>
+            </div>
+          </div>
+          <div className="code-orbit orbit-a" />
+          <div className="code-orbit orbit-b" />
+          <div className="code-symbol">&lt;/&gt;</div>
+          <div className="code-float">PYTHON<br /><span>BUILD · DEBUG · SHIP</span></div>
+        </div>
+
         <div className="floating-word-list">Ideas<br />Code<br />Build<br />Learn<br />Repeat</div>
 
+        <div className="stats-grid">
         <div className="stats-grid">
           <StatCard icon={Code2} value="4+" label="Projects Completed" />
           <StatCard icon={BriefcaseBusiness} value="3+" label="Work Experiences" />
