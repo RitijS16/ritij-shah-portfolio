@@ -134,7 +134,7 @@ function Hero() {
 
         <div className="hero-mini-stats">
           <div><strong>3+</strong><span>Work Experiences</span></div>
-          <div><strong>4+</strong><span>Projects Completed</span></div>
+          <div><strong>10+</strong><span>Projects Completed</span></div>
           <div><strong>8.2</strong><span>CGPA (B.Tech)</span></div>
         </div>
 
