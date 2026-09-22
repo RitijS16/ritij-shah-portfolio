@@ -366,6 +366,17 @@ function Hero() {
             <span>Shah.</span>
           </motion.h1>
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mt-7 flex flex-wrap gap-2"
+          >
+            <span className="hero-chip">FULL-STACK</span>
+            <span className="hero-chip">PYTHON</span>
+            <span className="hero-chip">DATA & AI</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -422,7 +433,27 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-12 flex items-center gap-6"
+            className="mt-10 grid max-w-xl grid-cols-3 gap-3"
+          >
+            <div className="hero-stat">
+              <strong>3+</strong>
+              <span>Experiences</span>
+            </div>
+            <div className="hero-stat">
+              <strong>4</strong>
+              <span>Featured Projects</span>
+            </div>
+            <div className="hero-stat">
+              <strong>2026</strong>
+              <span>Graduate</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.95 }}
+            className="mt-6 flex items-center gap-6"
           >
 
             <a
@@ -832,6 +863,21 @@ function Projects() {
           title="Things I've built."
         />
 
+        <div className="mb-10 flex items-center justify-between gap-4">
+          <p className="max-w-2xl text-sm leading-7 text-white/35">
+            A selection of projects across computer vision, analytics,
+            machine learning and software development.
+          </p>
+          <a
+            href="https://github.com/RitijS16?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden rounded-full border border-white/10 px-4 py-2 text-xs text-white/50 transition hover:border-white/25 hover:text-white sm:inline-flex"
+          >
+            View all repositories <ArrowUpRight size={14} />
+          </a>
+        </div>
+
         <div className="grid gap-5 md:grid-cols-2">
 
           {projects.map((project, index) => (
@@ -920,7 +966,7 @@ function Contact() {
 
       <div className="relative mx-auto max-w-7xl px-6">
 
-        <div className="glass-card overflow-hidden p-10 text-center md:p-20">
+        <div className="contact-card glass-card overflow-hidden p-10 text-center md:p-20">
 
           <motion.div
             animate={{
