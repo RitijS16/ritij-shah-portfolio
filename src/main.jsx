@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Github,
-  Linkedin,
+  GitBranch as Github,
+  UserRound as Linkedin,
   Mail,
   Home,
   UserRound,
