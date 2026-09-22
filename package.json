@@ -3,7 +3,20 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {"dev":"vite","build":"node ./node_modules/vite/bin/vite.js build","preview":"vite preview"}
-  "dependencies": {"@vitejs/plugin-react":"latest","vite":"latest","react":"latest","react-dom":"latest","lucide-react":"latest","framer-motion":"latest","tailwindcss":"latest","@tailwindcss/vite":"latest"},
+  "scripts": {
+    "dev": "vite",
+    "build": "node ./node_modules/vite/bin/vite.js build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest",
+    "framer-motion": "latest",
+    "tailwindcss": "latest",
+    "@tailwindcss/vite": "latest"
+  },
   "devDependencies": {}
 }
