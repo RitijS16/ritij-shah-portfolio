@@ -95,7 +95,7 @@ function TopNav() {
           </a>
         ))}
       </div>
-      <a className="connect-button" href="#contact">
+      <a className="connect-button" href="mailto:shahritij2004@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Ritij%2C%0A%0AI%27d%20like%20to%20get%20in%20touch%20with%20you.">
         <Send size={15} />
         Let's Connect
       </a>
@@ -330,7 +330,7 @@ function Contact() {
       <h2>LET'S BUILD<br /><span>SOMETHING REAL.</span></h2>
       <p>Open to opportunities in full-stack development, Python, data and AI.</p>
       <div className="contact-actions">
-        <a href="mailto:shahritij2004@gmail.com" className="gradient-button"><Mail size={17} /> Get In Touch</a>
+        <a href="mailto:shahritij2004@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Ritij%2C%0A%0AI%27d%20like%20to%20get%20in%20touch%20with%20you." className="gradient-button"><Mail size={17} /> Get In Touch</a>
         <a href="https://www.linkedin.com/in/ritij-shah" target="_blank" rel="noreferrer" className="outline-button"><Linkedin size={17} /> LinkedIn</a>
         <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" className="outline-button"><Github size={17} /> GitHub</a>
       </div>
