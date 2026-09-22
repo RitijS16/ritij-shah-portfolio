@@ -85,47 +85,6 @@ const navItems = [
   ["Contact", "contact", Mail],
 ];
 
-function Sidebar({ mobileOpen, setMobileOpen }) {
-  return (
-    <>
-      <aside className={`portfolio-sidebar ${mobileOpen ? "sidebar-open" : ""}`}>
-        <div className="sidebar-brand">
-          <span>RS</span><i />
-        </div>
-
-        <nav className="sidebar-nav">
-          {navItems.map(([label, id, Icon], index) => (
-            <a
-              href={`#${id}`}
-              key={id}
-              className={index === 0 ? "sidebar-link active" : "sidebar-link"}
-              onClick={() => setMobileOpen(false)}
-            >
-              <Icon size={19} strokeWidth={1.8} />
-              <span>{label}</span>
-            </a>
-          ))}
-        </nav>
-
-        <div className="sidebar-socials">
-          <a href="https://github.com/RitijS16?tab=repositories" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
-          <a href="https://www.linkedin.com/in/ritij-shah" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
-          <a href="mailto:shahritij2004@gmail.com" aria-label="Email"><Mail size={19} /></a>
-        </div>
-
-        <div className="sidebar-footer">
-          <span>LET'S</span>
-          <strong>BUILD<br />SOMETHING<br />GREAT.</strong>
-        </div>
-      </aside>
-
-      <button className="mobile-menu-button" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle navigation">
-        {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-      </button>
-    </>
-  );
-}
-
 function TopNav() {
   return (
     <header className="top-nav">
@@ -367,11 +326,8 @@ function Contact() {
 }
 
 function App() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
   return (
     <div className="portfolio-shell">
-      <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
       <div className="portfolio-page">
         <TopNav />
         <main>
