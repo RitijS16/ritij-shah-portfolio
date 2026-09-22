@@ -264,14 +264,22 @@ a { color: inherit; text-decoration: none; }
 
 .tech-stack-strip { margin-top: 32px; }
 .tech-stack-strip p { color: #536da8; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .18em; }
-.stack-icons { display: flex; align-items: center; gap: 18px; margin-top: 14px; color: #36c8ff; font-size: 18px; font-weight: 800; }
-.stack-icons span:nth-child(1) { color: #ffd34d; }
-.stack-icons span:nth-child(2) { color: #00d9ff; font-size: 25px; }
-.stack-icons span:nth-child(3) { color: #65d49b; }
-.stack-icons span:nth-child(4) { color: #56d2c2; font-size: 12px; }
-.stack-icons span:nth-child(5) { color: #5bcf86; font-size: 12px; }
-.stack-icons span:nth-child(6) { color: #ffb632; font-size: 14px; }
-.stack-icons span:nth-child(7) { color: #37b8ff; font-size: 13px; }
+.stack-icons { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.stack-logo { min-width: 68px; height: 42px; padding: 0 9px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid rgba(100, 137, 210, .24); border-radius: 9px; background: rgba(6, 15, 31, .72); color: #cbd8ef; transition: .25s ease; }
+.stack-logo b { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; border-radius: 6px; font-family: "Space Mono", monospace; font-size: 9px; font-weight: 800; }
+.stack-logo small { font-size: 8px; font-weight: 700; color: #8494b1; letter-spacing: .02em; }
+.stack-logo:hover { transform: translateY(-3px); border-color: rgba(171, 73, 255, .65); background: rgba(89, 39, 170, .12); box-shadow: 0 8px 24px rgba(81, 35, 180, .14); }
+.stack-logo.python b { background: linear-gradient(135deg, #3776ab, #ffd343); color: #07101f; }
+.stack-logo.javascript b { background: #f7df1e; color: #111827; }
+.stack-logo.react b { background: #202b3f; color: #61dafb; font-size: 16px; }
+.stack-logo.django b { background: #092d1f; color: #6bd89a; }
+.stack-logo.sql b { background: #143f70; color: #8fd8ff; }
+.stack-logo.postgresql b { background: #244b7c; color: #9fd7ff; }
+.stack-logo.aws b { background: #2b2110; color: #ffb632; }
+@media (max-width: 430px) {
+  .stack-logo { min-width: 62px; }
+  .stack-logo small { display: none; }
+}
 
 blockquote {
   margin: 42px 0 0;
