@@ -1175,3 +1175,67 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
   .hero-main { padding-left: 38px !important; padding-right: 30px !important; }
   .coding-graphic { right: -25px !important; transform: scale(.62) !important; }
 }
+
+/* Subtle 3D animated background */
+.portfolio-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.portfolio-page::before,
+.portfolio-page::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .5;
+  transform-style: preserve-3d;
+}
+.portfolio-page::before {
+  width: 280px;
+  height: 280px;
+  right: 7%;
+  top: 18%;
+  border: 1px solid rgba(102, 78, 255, .55);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(139, 67, 255, .16), transparent 55%),
+    repeating-linear-gradient(45deg, rgba(61, 192, 255, .08) 0 1px, transparent 1px 24px);
+  box-shadow:
+    0 0 70px rgba(103, 52, 255, .16),
+    inset 0 0 60px rgba(31, 151, 255, .08);
+  animation: floatCube 12s ease-in-out infinite, spinCube 22s linear infinite;
+}
+.portfolio-page::after {
+  width: 190px;
+  height: 190px;
+  left: 8%;
+  top: 54%;
+  border: 1px solid rgba(31, 201, 255, .45);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(82, 219, 255, .22), transparent 30%),
+    radial-gradient(circle, transparent 45%, rgba(145, 61, 255, .13) 46%, transparent 47%);
+  box-shadow: 0 0 65px rgba(25, 173, 255, .12);
+  animation: floatOrb 10s ease-in-out infinite, pulseOrb 5s ease-in-out infinite;
+}
+@keyframes floatCube {
+  0%, 100% { transform: perspective(900px) rotateX(12deg) rotateY(-18deg) translate3d(0, 0, 0); }
+  50% { transform: perspective(900px) rotateX(28deg) rotateY(18deg) translate3d(-24px, 35px, 70px); }
+}
+@keyframes spinCube {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(35deg); }
+}
+@keyframes floatOrb {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(.9); }
+  50% { transform: translate3d(35px, -45px, 55px) scale(1.08); }
+}
+@keyframes pulseOrb {
+  0%, 100% { opacity: .35; }
+  50% { opacity: .65; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-page::before,
+  .portfolio-page::after { animation: none; }
+}
