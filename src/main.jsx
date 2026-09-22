@@ -149,29 +149,12 @@ function Avatar() {
     <div className="avatar-scene" aria-hidden="true">
       <div className="avatar-ring ring-one" />
       <div className="avatar-ring ring-two" />
-      <div className="avatar-glow" />
-      <div className="avatar-code-badge"><Code2 size={23} /></div>
-
-      <div className="avatar">
-        <div className="avatar-hair" />
-        <div className="avatar-head">
-          <div className="avatar-ear left" />
-          <div className="avatar-ear right" />
-          <div className="avatar-glasses">
-            <span /><span /><b />
-          </div>
-          <div className="avatar-nose" />
-          <div className="avatar-mouth" />
-        </div>
-        <div className="avatar-neck" />
-        <div className="avatar-hoodie">
-          <div className="hoodie-string left" />
-          <div className="hoodie-string right" />
-          <span className="hoodie-logo">{"{}"}</span>
-        </div>
+      <div className="avatar-photo-glow" />
+      <div className="avatar-photo-wrap">
+        <img className="developer-photo" src="/developer-boy.svg" alt="Developer illustration" />
       </div>
-
-      <div className="avatar-note">Better<br />solutions<br />everyday.</div>
+      <div className="avatar-code-badge"><Code2 size={23} /></div>
+      <div className="avatar-note">Build<br />Learn<br />Improve<br />Repeat</div>
       <div className="avatar-bracket">{"< />"}</div>
     </div>
   );
