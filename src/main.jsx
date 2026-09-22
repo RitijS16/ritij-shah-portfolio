@@ -212,8 +212,6 @@ function Hero() {
           <div className="availability"><i /> Available for Opportunities</div>
         </div>
 
-        <Avatar />
-
         <div className="floating-word-list">Ideas<br />Code<br />Build<br />Learn<br />Repeat</div>
 
         <div className="stats-grid">
