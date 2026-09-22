@@ -916,3 +916,31 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
 @media (max-width: 700px) {
   .coding-graphic { opacity: .22; right: -120px; top: 170px; transform: scale(.65); }
 }
+
+/* Ensure coding graphic is visible above hero background layers */
+.hero-main { isolation: isolate; }
+.hero-main::after { z-index: 0; }
+.hero-intro { z-index: 8 !important; }
+.coding-graphic {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 5 !important;
+  top: 105px;
+  right: 34px;
+}
+.code-window {
+  z-index: 3;
+  opacity: 1 !important;
+}
+.code-orbit { z-index: 1; }
+.code-symbol, .code-float { z-index: 6; }
+@media (max-width: 1200px) {
+  .coding-graphic { right: 5px; transform: scale(.82); transform-origin: top right; }
+}
+@media (max-width: 980px) {
+  .coding-graphic { opacity: .72 !important; right: -20px; top: 120px; transform: scale(.74); }
+}
+@media (max-width: 700px) {
+  .coding-graphic { opacity: .35 !important; right: -90px; top: 175px; transform: scale(.62); }
+}
