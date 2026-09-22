@@ -192,12 +192,6 @@ function Hero() {
 
         <div className="floating-word-list">Ideas<br />Code<br />Build<br />Learn<br />Repeat</div>
 
-        <div className="stats-grid">
-          <StatCard icon={Code2} value="4+" label="Projects Completed" />
-          <StatCard icon={BriefcaseBusiness} value="3+" label="Work Experiences" />
-          <StatCard icon={Trophy} value="2026" label="B.Tech Graduate" />
-          <StatCard icon={BrainCircuit} value="AI" label="Data & ML" />
-        </div>
       </div>
     </section>
   );
