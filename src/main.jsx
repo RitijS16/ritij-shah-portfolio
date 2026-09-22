@@ -49,6 +49,7 @@ const projects = [
     desc: "Real-time facial emotion recognition application using computer vision and a CNN model built with TensorFlow.",
     tech: ["Python", "TensorFlow", "CNN", "Computer Vision"],
     icon: Brain,
+    link: "https://github.com/RitijS16?tab=repositories",
   },
   {
     title: "Uber Data Analysis",
@@ -56,6 +57,7 @@ const projects = [
     desc: "Analyzed 100K+ Uber trip records to identify peak-hour demand, trip-duration trends and high-demand locations.",
     tech: ["Python", "Pandas", "SQL", "Power BI"],
     icon: Database,
+    link: "https://github.com/RitijS16?tab=repositories",
   },
   {
     title: "NLP Movie Recommender",
@@ -63,6 +65,7 @@ const projects = [
     desc: "Personalized movie recommendation system using similarity and correlation techniques to improve recommendations.",
     tech: ["Python", "NLP", "Cosine Similarity", "ML"],
     icon: Code2,
+    link: "https://github.com/RitijS16?tab=repositories",
   },
   {
     title: "Student Database System",
@@ -70,6 +73,7 @@ const projects = [
     desc: "Application for managing student academics, attendance, exams, registration, courses and grade reporting.",
     tech: ["Python", "SQL", "Database"],
     icon: Layers,
+    link: "https://github.com/RitijS16?tab=repositories",
   },
 ];
 
@@ -422,7 +426,9 @@ function Hero() {
           >
 
             <a
-              href="#contact"
+              href="https://github.com/RitijS16?tab=repositories"
+              target="_blank"
+              rel="noreferrer"
               className="social-link"
               aria-label="GitHub"
               title="GitHub"
@@ -431,7 +437,9 @@ function Hero() {
             </a>
 
             <a
-              href="#contact"
+              href="https://www.linkedin.com/in/ritij-shah"
+              target="_blank"
+              rel="noreferrer"
               className="social-link"
               aria-label="LinkedIn"
               title="LinkedIn"
@@ -782,7 +790,9 @@ function ProjectCard({
       <div className="mt-8 flex gap-4">
 
         <a
-          href="#contact"
+          href={project.link}
+          target="_blank"
+          rel="noreferrer"
           className="project-link"
         >
           GitHub
@@ -955,7 +965,9 @@ function Contact() {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/in/ritij-shah"
+              target="_blank"
+              rel="noreferrer"
               className="secondary-button"
             >
               <ExternalLink size={16} />
@@ -963,7 +975,9 @@ function Contact() {
             </a>
 
             <a
-              href="#"
+              href="https://github.com/RitijS16?tab=repositories"
+              target="_blank"
+              rel="noreferrer"
               className="secondary-button"
             >
               <Code2 size={16} />
