@@ -1242,3 +1242,61 @@ blockquote small { display: block; margin-top: 10px; color: #536383; font-family
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Mobile: keep the main RITIJ SHAH identity section visible */
+@media (max-width: 700px) {
+  .dashboard-hero {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .hero-copy {
+    display: block !important;
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 42px 20px 34px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(84, 139, 232, .13) !important;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(4rem, 18vw, 5.4rem) !important;
+    line-height: .84 !important;
+    margin: 18px 0 20px !important;
+  }
+
+  .role-line {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+  }
+
+  .hero-description {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+    margin-top: 18px !important;
+  }
+
+  .hero-actions {
+    margin-top: 22px !important;
+  }
+
+  .hero-mini-stats {
+    margin-top: 28px !important;
+  }
+
+  .tech-stack-strip,
+  .hero-copy blockquote {
+    display: none !important;
+  }
+
+  .hero-main {
+    min-height: 650px !important;
+    padding: 42px 20px 170px !important;
+  }
+
+  .hero-main .hero-intro {
+    padding-top: 0 !important;
+  }
+}
