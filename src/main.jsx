@@ -1,7 +1,13 @@
 import React from "react";
 import {createRoot} from "react-dom/client";
-import {Github,Linkedin,Mail,ArrowUpRight,Download} from "lucide-react";
 import "./index.css";
+
+const Icon=({children,size=17})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
+const Github=({size=17})=><Icon size={size}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.7-1.6 6.7-7A5.4 5.4 0 0 0 19.2 4 5 5 0 0 0 19 1s-1.2-.4-4 1.7a13.4 13.4 0 0 0-7 0C5.2.6 4 1 4 1a5 5 0 0 0-.2 3A5.4 5.4 0 0 0 2.3 7.5c0 5.4 3.4 6.6 6.7 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-4 .9-4-2-5-2"/></Icon>;
+const Linkedin=({size=17})=><Icon size={size}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v2"/><rect x="2" y="9" width="4" height="12" rx="1"/><circle cx="4" cy="4" r="2"/></Icon>;
+const Mail=({size=17})=><Icon size={size}><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></Icon>;
+const ArrowUpRight=({size=16})=><Icon size={size}><path d="M7 17 17 7"/><path d="M7 7h10v10"/></Icon>;
+const Download=({size=15})=><Icon size={size}><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></Icon>;
 
 function App(){return <div className="site">
 <header className="nav"><a className="logo" href="#home">RS<span>.</span></a><nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav><a className="nav-mail" href="mailto:shahritij2004@gmail.com">Email me</a></header>
