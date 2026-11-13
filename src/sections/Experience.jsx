@@ -11,16 +11,16 @@ export default function Experience() {
   useGSAP(() => {
     if (reduceMotion()) return
     gsap.from('.g-bar', { scaleX: 0, duration: 1.4, ease: 'expo.out', stagger: 0.12, scrollTrigger: { trigger: '.gantt', start: 'top 85%', once: true } })
-    gsap.utils.toArray('.role').forEach((el) => gsap.from(el.children, { y: 30, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }))
+    gsap.from('.role', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.role', start: 'top 90%', once: true } })
   }, { scope: root })
 
   const hover = (id) => ({ onPointerEnter: () => setHl(id), onPointerLeave: () => setHl('') })
   return (
     <section className="module" id="experience" ref={root} aria-labelledby="exp-title">
       <div className="wrap">
-        <Strip><span className="name">Experience</span><span>{roles.length} roles</span><span className="end">{timeline.start} → now</span></Strip>
+        <Strip><span className="name">Experience</span><span>{timeline.start} → now</span></Strip>
         <div className="module-head"><VarTitle id="exp-title" text="Experience" /></div>
-        <div className="gantt grid gap-2.5 mb-[clamp(28px,4vw,44px)]" aria-hidden="true">
+        <div className="gantt grid gap-3 mb-[clamp(40px,5vw,64px)]" aria-hidden="true">
           {roles.map((r) => (
             <div key={r.id} className="grid grid-cols-[11ch_minmax(0,1fr)] sm:grid-cols-[17ch_minmax(0,1fr)] gap-3.5 items-center" {...hover(r.id)}>
               <span className="font-mono text-xs text-ink-2 truncate">{r.short}</span>
@@ -36,14 +36,12 @@ export default function Experience() {
             </div>
           </div>
         </div>
-        <div className="grid border-t border-rule mb-[clamp(56px,8vw,110px)]">
+        <div className="grid border-t border-rule">
           {roles.map((r) => (
-            <article key={r.id} className={'role grid gap-1 sm:grid-cols-[17ch_minmax(0,1fr)] sm:gap-3.5 py-[22px] border-b border-rule' + (hl === r.id ? ' hl' : '')} {...hover(r.id)}>
-              <span className="font-mono text-xs leading-relaxed text-ink-3 tabular-nums">{r.when}{r.where && <><br />{r.where}</>}</span>
-              <div>
-                <h3 className="m-0 text-[21px] leading-tight font-semibold tracking-[-0.01em]">{r.title} <small className="text-[15px] font-normal text-ink-2 tracking-normal">· {r.org}</small></h3>
-                <ul className="mt-2.5 mb-0 pl-[18px] text-ink-2 max-w-[70ch] list-disc space-y-1">{r.points.map((p) => <li key={p}>{p}</li>)}</ul>
-              </div>
+            <article key={r.id} className={'role grid gap-x-6 gap-y-1 py-6 border-b border-rule md:grid-cols-[17ch_minmax(0,2fr)_minmax(0,3fr)] items-baseline' + (hl === r.id ? ' hl' : '')} {...hover(r.id)}>
+              <span className="font-mono text-xs text-ink-3 tabular-nums">{r.when}</span>
+              <h3 className="m-0 text-[17px] leading-snug font-semibold">{r.title} <span className="font-normal text-ink-2">· {r.org}</span></h3>
+              <p className="m-0 text-ink-2">{r.line}</p>
             </article>
           ))}
         </div>

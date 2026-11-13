@@ -75,8 +75,8 @@ export default function Hero() {
       <div className="hero-copy wrap">
         <div>
           <span className="label eyebrow">{person.name} · {person.role} · {person.city}</span>
-          <h1>I build web apps and AI tools, and I like them to move.</h1>
-          <p className="lede">AI &amp; Technology Intern at Gritfox, building websites and ERP software for FMCG clients. B.Tech in Computer Science, 2026. Press the pins, or type a word and watch them spell it.</p>
+          <h1>I build web apps and AI tools that move.</h1>
+          <p className="lede">Currently building at Gritfox. Type a word to rewrite the pins.</p>
         </div>
         <div className="hero-side">
           <div className="hints" aria-hidden="true">

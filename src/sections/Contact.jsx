@@ -20,8 +20,8 @@ export default function Contact() {
     <section className="module" id="contact" aria-labelledby="contact-title">
       <div className="wrap">
         <Strip><span className="name">Contact</span><span>{person.city} · IST (UTC+5:30)</span></Strip>
-        <div className="grid gap-[34px] pt-8 pb-[clamp(40px,6vw,72px)]">
-          <VarTitle id="contact-title" text="Say hello" className="vt !text-[clamp(64px,15vw,240px)]" radius={340} />
+        <div className="grid gap-7 pt-7 pb-[clamp(40px,6vw,64px)]">
+          <VarTitle id="contact-title" text="Say hello" className="vt" radius={300} />
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
             <a ref={mail} href={'mailto:' + person.email} data-cursor="email" className="font-mono font-medium text-[clamp(20px,3vw,34px)] leading-tight no-underline break-all border-b-2 border-signal">{person.email}</a>
             <button className="btn" type="button" onClick={copy}>Copy email</button>

@@ -17,7 +17,7 @@ function Clock() {
   return <b>{t}</b>
 }
 
-// Skills ticker: drifts left on its own, speeds up with scroll velocity and reverses when you scroll up.
+// Skills ticker: drifts on its own, speeds up with scroll velocity and reverses when you scroll up.
 function Marquee() {
   const track = useRef(null)
   useGSAP(() => {
@@ -46,32 +46,34 @@ export default function About() {
   const root = useRef(null)
   useGSAP(() => {
     if (reduceMotion()) return
-    gsap.from('.about-big', { y: 40, autoAlpha: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.about-big', start: 'top 88%', once: true } })
-    gsap.utils.toArray('.facts').forEach((dl) => gsap.from(dl.children, { y: 20, autoAlpha: 0, duration: 0.7, stagger: 0.05, ease: 'power3.out', scrollTrigger: { trigger: dl, start: 'top 88%', once: true } }))
+    gsap.from('.about-in > *', { y: 30, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'expo.out', scrollTrigger: { trigger: '.about-in', start: 'top 88%', once: true } })
+    gsap.from('.skill-chip', { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.02, ease: 'power2.out', scrollTrigger: { trigger: '.skills', start: 'top 90%', once: true } })
   }, { scope: root })
-  const Facts = ({ rows, className = '' }) => (
-    <dl className={'facts m-0 grid content-start border-t border-rule ' + className}>
-      {rows.map(([k, v]) => (
-        <div key={k} className="grid grid-cols-[12ch_minmax(0,1fr)] gap-3 py-3 border-b border-rule text-[15px]">
-          <dt className="label leading-[1.9]">{k}</dt><dd className="m-0 min-w-0">{v}</dd>
-        </div>
-      ))}
-    </dl>
-  )
   return (
     <section className="module" id="about" ref={root} aria-labelledby="about-title">
       <div className="wrap">
-        <Strip><span className="name">About</span><span>{person.city}, Maharashtra</span><span className="end">Local time <Clock /> IST</span></Strip>
+        <Strip><span className="name">About</span><span>{person.city}</span><span className="end">Local time <Clock /> IST</span></Strip>
         <div className="module-head"><VarTitle id="about-title" text="About" /></div>
       </div>
       <Marquee />
       <div className="wrap">
-        <div className="grid gap-[clamp(28px,5vw,80px)] pt-[clamp(32px,4vw,56px)] pb-[clamp(56px,8vw,110px)] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-          <div>
-            <p className="about-big m-0 font-medium text-[clamp(22px,2.4vw,32px)] leading-[1.3] tracking-[-0.01em] max-w-[30ch] text-pretty">{about.intro}</p>
-            <Facts rows={about.facts} className="mt-8" />
+        <div className="grid gap-[clamp(28px,5vw,72px)] pt-[clamp(28px,4vw,48px)] lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)]">
+          <div className="about-in grid gap-6 content-start">
+            <p className="m-0 font-medium text-[clamp(22px,2.4vw,30px)] leading-[1.3] tracking-[-0.01em] max-w-[26ch] text-pretty">{about.intro}</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {about.badges.map(([k, v]) => (
+                <div key={k} className="card !p-4 grid gap-1"><b className="text-[15px] font-semibold">{k}</b><span className="text-[13px] text-ink-2">{v}</span></div>
+              ))}
+            </div>
           </div>
-          <Facts rows={about.skills} />
+          <div className="skills grid gap-3 content-start">
+            {about.skills.map(([group, list]) => (
+              <div key={group} className="grid grid-cols-[9ch_minmax(0,1fr)] gap-3 items-baseline">
+                <span className="label">{group}</span>
+                <div className="flex flex-wrap gap-1.5">{list.map((s) => <span key={s} className="skill-chip">{s}</span>)}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

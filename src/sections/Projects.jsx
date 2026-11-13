@@ -65,26 +65,19 @@ function EmiToy() {
   }, [rows])
 
   return (
-    <div className="toy grid gap-[clamp(20px,3vw,44px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" aria-label="EMI calculator">
-      <div className="grid gap-4 content-start">
-        <Slider id="emi-amt" label="Loan amount" value={amt} min={50000} max={5000000} step={10000} onChange={setAmt} show={inr} />
-        <Slider id="emi-rate" label="Interest rate, yearly" value={rate} min={6} max={24} step={0.1} onChange={setRate} show={(v) => v.toFixed(1) + '%'} />
-        <Slider id="emi-ten" label="Tenure" value={ten} min={6} max={84} step={1} onChange={setTen} show={(v) => v + ' months'} />
+    <div className="grid gap-5 sm:grid-cols-2" aria-label="EMI calculator">
+      <div className="grid gap-3 content-start">
+        <Slider id="emi-amt" label="Loan" value={amt} min={50000} max={5000000} step={10000} onChange={setAmt} show={inr} />
+        <Slider id="emi-rate" label="Rate" value={rate} min={6} max={24} step={0.1} onChange={setRate} show={(v) => v.toFixed(1) + '%'} />
+        <Slider id="emi-ten" label="Months" value={ten} min={6} max={84} step={1} onChange={setTen} show={(v) => String(v)} />
       </div>
-      <div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-          <div className="grid gap-1.5 col-span-2 sm:col-span-1 [&_b]:text-signal"><span className="label">Monthly EMI</span><Tween value={emi} format={inr} /></div>
-          <div className="grid gap-1.5"><span className="label">Total interest</span><Tween value={emi * ten - amt} format={inr} /></div>
-          <div className="grid gap-1.5"><span className="label">Total paid</span><Tween value={emi * ten} format={inr} /></div>
+      <div className="grid gap-3 content-start">
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <div className="grid gap-1 [&_b]:text-signal"><span className="label">EMI / month</span><Tween value={emi} format={inr} /></div>
+          <div className="grid gap-1"><span className="label">Interest</span><Tween value={emi * ten - amt} format={inr} /></div>
         </div>
-        <canvas ref={cv} className="w-full h-[170px] block" role="img" aria-label="Each month's EMI split into principal and interest" />
-        <div className="legend flex flex-wrap gap-4 mt-2 font-mono text-xs text-ink-2">
-          <span><i style={{ background: 'var(--ink-3)' }} />Principal</span>
-          <span><i style={{ background: 'var(--signal)' }} />Interest</span>
-          <span>{cross > 1 ? `Principal overtakes interest in month ${cross}` : 'Principal leads from month 1'}</span>
-        </div>
+        <canvas ref={cv} className="w-full h-[110px] block" role="img" aria-label="Each month's EMI split into principal (grey) and interest (orange)" />
       </div>
-      <p className="fine lg:col-span-2">A working EMI calculator, the core formula behind the advisor's loan analysis. Every month's payment stays the same, but early payments are mostly interest.</p>
     </div>
   )
 }
@@ -106,14 +99,13 @@ function FaceToy() {
     return () => f.destroy()
   }, [])
   return (
-    <div className="toy grid gap-[clamp(20px,3vw,44px)] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-center">
-      <canvas ref={cv} className="face" tabIndex={0} data-cursor="move" role="img" aria-label="A line-drawn face. Moving the pointer toward a corner blends in that expression; arrow keys work too." />
+    <div className="grid gap-5 grid-cols-[minmax(0,180px)_minmax(0,1fr)] items-center">
+      <canvas ref={cv} className="face" tabIndex={0} data-cursor="move" role="img" aria-label="A line-drawn face. Move the pointer toward a corner, or use the arrow keys, to blend in that expression." />
       <ul className="bars" ref={list} aria-label="Expression mix">
         {EMOTIONS.map((e) => (
           <li key={e}><span className="word">{e}</span><span className="track"><span className="fill" style={{ transition: 'none' }} /></span><span className="pct">0%</span></li>
         ))}
       </ul>
-      <p className="fine md:col-span-2">A toy, not the model: move your pointer around the face to blend the four expressions the CNN was trained to tell apart. The bars show the mix.</p>
     </div>
   )
 }
@@ -122,26 +114,23 @@ export default function Projects() {
   const root = useRef(null)
   useGSAP(() => {
     if (reduceMotion()) return
-    gsap.utils.toArray('.proj').forEach((el) => {
-      gsap.from(el.querySelectorAll('.proj-reveal'), { y: 40, autoAlpha: 0, duration: 1, stagger: 0.08, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } })
-      const toy = el.querySelector('.toy')
-      if (toy) gsap.from(toy, { clipPath: 'inset(0 0 100% 0 round 10px)', duration: 1.2, ease: 'expo.inOut', scrollTrigger: { trigger: toy, start: 'top 88%', once: true }, clearProps: 'clipPath' })
-    })
+    gsap.from('.proj', { y: 50, autoAlpha: 0, duration: 1, stagger: 0.1, ease: 'expo.out', scrollTrigger: { trigger: '.proj', start: 'top 88%', once: true } })
   }, { scope: root })
 
+  const spans = { finance: 'lg:col-span-7', emotion: 'lg:col-span-5', shap: 'lg:col-span-6', uber: 'lg:col-span-6' }
   return (
     <section className="module" id="projects" ref={root} aria-labelledby="projects-title">
       <div className="wrap">
-        <Strip><span className="name">Projects</span><span>Machine learning · computer vision · data</span><span className="end">Two of them are playable below</span></Strip>
-        <div className="module-head"><VarTitle id="projects-title" text="More projects" /></div>
-        <div className="border-t border-rule mb-[clamp(56px,8vw,110px)]">
+        <Strip><span className="name">Projects</span><span>ML · vision · data</span><span className="end">Two are playable</span></Strip>
+        <div className="module-head"><VarTitle id="projects-title" text="Projects" /></div>
+        <div className="grid gap-[clamp(16px,1.6vw,24px)] lg:grid-cols-12">
           {projects.map((p) => (
-            <article key={p.id} className="proj grid gap-[18px] py-[clamp(26px,3.4vw,40px)] border-b border-rule" aria-labelledby={'p-' + p.id}>
-              <div className="proj-reveal grid gap-x-7 gap-y-2.5 items-end md:grid-cols-[minmax(0,1fr)_auto]">
-                <div><span className="label">{p.kind}</span><VarTitle as="h3" className="" id={'p-' + p.id} text={p.title} radius={200} /></div>
-                <div className="tags flex flex-wrap gap-1.5 md:justify-end max-w-[46ch]">{p.tags.map((t) => <span key={t}>{t}</span>)}</div>
+            <article key={p.id} className={'proj card ' + spans[p.id]} aria-labelledby={'p-' + p.id}>
+              <div className="proj-reveal flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                <div className="min-w-0"><span className="label">{p.kind}</span><h3 id={'p-' + p.id}>{p.title}</h3></div>
+                <div className="tags flex flex-wrap gap-1.5">{p.tags.map((t) => <span key={t}>{t}</span>)}</div>
               </div>
-              <p className="proj-reveal m-0 max-w-[64ch] text-ink-2">{p.desc}</p>
+              <p className="proj-reveal m-0 text-ink-2 max-w-[52ch]">{p.desc}</p>
               {p.toy === 'emi' && <EmiToy />}
               {p.toy === 'face' && <FaceToy />}
             </article>
